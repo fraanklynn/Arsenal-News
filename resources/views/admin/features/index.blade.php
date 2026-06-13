@@ -74,36 +74,4 @@
     {{ $posts->links('vendor.pagination.custom-admin') }}
 </div>
 
-<style>
-    .btn-status {
-        border: none;
-        padding: 6px 12px;
-        border-radius: 8px;
-        font-size: 0.8rem;
-        font-weight: 600;
-        cursor: pointer;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        transition: all 0.2s;
-        width: 110px;
-        justify-content: center;
-    }
-    .btn-active {
-        background-color: #ebfbee;
-        color: #2f9e44;
-    }
-    .btn-active:hover {
-        background-color: #2f9e44;
-        color: white;
-    }
-    .btn-inactive {
-        background-color: #f8f9fa;
-        color: #adb5bd;
-    }
-    .btn-inactive:hover {
-        background-color: #dee2e6;
-        color: #495057;
-    }
-</style>
 @endsection

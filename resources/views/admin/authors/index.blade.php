@@ -25,15 +25,15 @@
                 @forelse($authors as $author)
                 <tr>
                     <td>
-                        <div style="display: flex; align-items: center; gap: 12px;">
-                            <div class="avatar-small" style="width: 35px; height: 35px; background: #f0f0f0; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--arsenal-red); font-weight: 700; font-size: 0.8rem; border: 1px solid #eee;">
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <div class="avatar-small" style="width: 40px; height: 40px; background: #fff1f1; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--arsenal-red); font-weight: 700; font-size: 1rem; border: 1px solid rgba(239, 1, 7, 0.1);">
                                 {{ substr($author->name, 0, 1) }}
                             </div>
-                            <span style="font-weight: 600; color: var(--arsenal-navy);">{{ $author->name }}</span>
+                            <span style="font-weight: 600; color: var(--arsenal-navy); font-size: 0.95rem;">{{ $author->name }}</span>
                         </div>
                     </td>
                     <td style="text-align: center;">
-                        <span class="badge-count" style="background: #f8f9fa; padding: 4px 10px; border-radius: 6px; font-weight: 600; font-size: 0.85rem; color: #666; border: 1px solid #eee;">
+                        <span class="badge-count" style="background: #f0f2f5; padding: 6px 14px; border-radius: 8px; font-weight: 600; font-size: 0.8rem; color: var(--arsenal-navy); border: 1px solid #e0e4e8;">
                             {{ $author->posts_count }} Articles
                         </span>
                     </td>
@@ -128,24 +128,6 @@
         </form>
     </div>
 </div>
-
-<style>
-    .btn-edit-small, .btn-delete-small {
-        width: 35px;
-        height: 35px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 8px;
-        border: none;
-        cursor: pointer;
-        transition: all 0.2s;
-    }
-    .btn-edit-small { background: #f0f7ff; color: #007bff; }
-    .btn-edit-small:hover { background: #007bff; color: white; }
-    .btn-delete-small { background: #fff5f5; color: #e03131; }
-    .btn-delete-small:hover { background: #e03131; color: white; }
-</style>
 
 @push('scripts')
 <script>
