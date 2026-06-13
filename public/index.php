@@ -1,21 +1,14 @@
 <?php
+// Tampilkan semua file di direktori saat ini
+echo "Lokasi index.php: " . __DIR__ . "<br>";
+echo "Isi folder saat ini:<br>";
+$files = scandir(__DIR__);
+foreach($files as $file) { echo $file . "<br>"; }
 
-use Illuminate\Foundation\Application;
-use Illuminate\Http\Request;
+// Cek vendor
+echo "<br>Cek vendor di parent folder:<br>";
+echo file_exists(__DIR__ . '/../vendor/autoload.php') ? "Ada di ../vendor" : "TIDAK ADA di ../vendor";
+echo "<br>";
+echo file_exists('/app/vendor/autoload.php') ? "Ada di /app/vendor" : "TIDAK ADA di /app/vendor";
 
-define('LARAVEL_START', microtime(true));
-
-// Cek maintenance mode (karena sekarang di root, cukup ./storage)
-if (file_exists($maintenance = __DIR__.'/storage/framework/maintenance.php')) {
-    require $maintenance;
-}
-
-// Register autoloader (sekarang langsung di ./vendor)
-// Paksa ke lokasi root yang benar
-require '/var/www/html/vendor/autoload.php';
-
-// Bootstrap Laravel (sekarang langsung di ./bootstrap)
-/** @var Application $app */
-$app = require_once '/var/www/html/bootstrap/app.php';
-
-$app->handleRequest(Request::capture());
+die();
