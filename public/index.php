@@ -1,6 +1,7 @@
 <?php
-// Jalur absolut yang pasti benar di Docker Railway
-require '/var/www/html/vendor/autoload.php';
-$app = require_once '/var/www/html/bootstrap/app.php';
+// Pastikan ini mengarah ke vendor di root
+require __DIR__.'/../vendor/autoload.php';
+
+$app = require_once __DIR__.'/../bootstrap/app.php';
 
 $app->handleRequest(Illuminate\Http\Request::capture())->send();
