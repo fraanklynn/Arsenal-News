@@ -15,6 +15,9 @@ COPY . .
 # INSTAL DEPENDENCIES DI DALAM SERVER (Ini langkah krusial)
 RUN composer install --no-dev --optimize-autoloader
 
+# ... (setelah RUN composer install)
+RUN npm install && npm run build
+
 # Beri izin folder storage
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
