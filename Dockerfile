@@ -1,24 +1,16 @@
-FROM php:8.4-apache
+FROM php:8.4-cli
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
-    libpng-dev \
-    libzip-dev \
-    zip \
-    unzip
+# Install dependencies yang dibutuhkan Laravel
+RUN apt-get update && apt-get install -y libpng-dev libzip-dev zip unzip \
+    && docker-php-ext-install pdo_mysql bcmath gd zip
 
-# Install PHP extensions
-RUN docker-php-ext-install pdo_mysql bcmath gd zip
-
-# Install Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-
-# Set working directory
+# Copy semua file ke folder kerja
 WORKDIR /var/www/html
 COPY . .
 
-# Install dependencies
-RUN composer install --no-dev --optimize-autoloader
-
-# Set permissions
+# Beri izin folder storage
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+
+# Jalankan server bawaan PHP
+EXPOSE 8080
+CMD ["php", "-S", "0.0.0.0:8080", "-t", "public"]
