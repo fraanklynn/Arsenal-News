@@ -1,0 +1,92 @@
+/* Center Layout Glassmorphism Login */
+.login-container {
+    background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('/images/login-bg.png') no-repeat center center;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    z-index: 1;
+}
+
+/* Ensure navbar/footer from layout don't interfere if present */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.login-box-glass {
+    background: rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 12px !important;
+    padding: 30px !important;
+    width: 100% !important;
+    max-width: 380px !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4) !important;
+    color: #ffffff !important;
+    animation: fadeInScale 0.6s ease-out;
+}
+
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.login-input {
+    background: rgba(255, 255, 255, 0.03) !important; /* Lebih transparan */
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 8px !important;
+    color: #ffffff !important;
+    padding: 8px 12px !important; /* Diperkecil agar box lebih tipis */
+    font-size: 0.9rem !important;
+    transition: all 0.3s ease !important;
+}
+
+.login-input::placeholder {
+    color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.login-input:focus {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(255, 255, 255, 0.5) !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.btn-login-arsenal {
+    background-color: #EF0107 !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 10px 0 !important;   /* Membuat tombol lebih pipih dan ramping */
+    font-size: 0.85rem !important;
+    letter-spacing: 0.1em;
+    transition: all 0.3s ease !important;
+    width: 100% !important;
+    max-width: 200px !important; /* Mempertahankan ukuran ringkas yang sudah pas */
+    display: block !important;
+    margin-left: auto !important;  /* Kunci untuk membuat tombol otomatis berada di tengah */
+    margin-right: auto !important; /* Kunci untuk membuat tombol otomatis berada di tengah */
+    margin-top: 25px !important;   /* Memberikan jarak yang pas dari input password */
+    text-align: center !important;
+}
+
+.btn-login-arsenal:hover {
+    background-color: #d00106 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(239, 1, 7, 0.3) !important;
+}
+
+.hover-white:hover {
+    color: #ffffff !important;
+}
+
+/* Hide Main Layout Header/Footer on Login Page */
+nav#mainNav, footer.site-footer {
+    display: none !important;
+}
