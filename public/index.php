@@ -1,7 +1,14 @@
-<?php
-// Pastikan ini mengarah ke vendor di root
-require __DIR__.'/../vendor/autoload.php';
+// Bootstrap Laravel and handle the request...
+$app = require_once '/var/www/html/bootstrap/app.php';
 
-$app = require_once __DIR__.'/../bootstrap/app.php';
-
-$app->handleRequest(Illuminate\Http\Request::capture())->send();
+try {
+    $response = $app->handleRequest(Illuminate\Http\Request::capture());
+    $response->send();
+} catch (\Throwable $e) {
+    // Tampilkan eror asli ke layar secara brutal
+    echo "<h1>Eror Asli:</h1><pre>";
+    echo $e->getMessage() . "\n\n";
+    echo $e->getTraceAsString();
+    echo "</pre>";
+    die();
+}
