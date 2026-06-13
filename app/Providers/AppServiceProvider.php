@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+// Import harus ditaruh di sini, di bawah namespace
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\URL; 
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,10 +16,12 @@ class AppServiceProvider extends ServiceProvider
         //
     }
 
-    use Illuminate\Support\Facades\URL;
-
+    /**
+     * Bootstrap any application services.
+     */
     public function boot(): void
     {
+        // Sekarang URL::forceScheme akan bekerja dengan benar
         if ($this->app->environment('production')) {
             URL::forceScheme('https');
         }
