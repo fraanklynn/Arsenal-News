@@ -1,14 +1,13 @@
-// Bootstrap Laravel and handle the request...
-$app = require_once '/var/www/html/bootstrap/app.php';
+<?php
 
-try {
-    $response = $app->handleRequest(Illuminate\Http\Request::capture());
-    $response->send();
-} catch (\Throwable $e) {
-    // Tampilkan eror asli ke layar secara brutal
-    echo "<h1>Eror Asli:</h1><pre>";
-    echo $e->getMessage() . "\n\n";
-    echo $e->getTraceAsString();
-    echo "</pre>";
-    die();
-}
+use Illuminate\Http\Request;
+
+define('LARAVEL_START', microtime(true));
+
+// Register the Composer autoloader...
+require __DIR__.'/../vendor/autoload.php';
+
+// Bootstrap Laravel and handle the request...
+$app = require_once __DIR__.'/../bootstrap/app.php';
+
+$app->handleRequest(Request::capture())->send();
