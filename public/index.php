@@ -11,10 +11,11 @@ if (file_exists($maintenance = __DIR__.'/storage/framework/maintenance.php')) {
 }
 
 // Register autoloader (sekarang langsung di ./vendor)
-require __DIR__.'/../vendor/autoload.php';
+// Paksa ke lokasi root yang benar
+require '/var/www/html/vendor/autoload.php';
 
 // Bootstrap Laravel (sekarang langsung di ./bootstrap)
 /** @var Application $app */
-$app = require_once __DIR__.'/../bootstrap/app.php';
+$app = require_once '/var/www/html/bootstrap/app.php';
 
 $app->handleRequest(Request::capture());
